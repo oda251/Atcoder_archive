@@ -5,6 +5,7 @@ class Point {
 		Point() : x(0), y(0) {}
 		Point(int x, int y) : x(x), y(y) {}
 		Point(const Point &src) : x(src.x), y(src.y) {}
+		void move(int a, int b) { x+=a; y+=b; }
 		Point &operator=(const Point &src) {
 			x = src.x;
 			y = src.y;
