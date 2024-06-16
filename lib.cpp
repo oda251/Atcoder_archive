@@ -1,13 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-class Point {
+
+int _;
+clock_t start_time = clock();
+void cerr_time(void) {
+	cerr << "time: " << (double)(clock() - start_time) / 1000 << "ms" << endl;
+}
+void init() {
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	std::cout.tie(nullptr);
+}class Point {
 	public:
 		int x;
 		int y;
 		Point() : x(0), y(0) {}
 		Point(int x, int y) : x(x), y(y) {}
 		Point(const Point &src) : x(src.x), y(src.y) {}
+		void move(int a, int b) { x+=a; y+=b; }
 		Point &operator=(const Point &src) {
 			x = src.x;
 			y = src.y;
@@ -64,9 +75,16 @@ class Point {
 			return x <= src.x && y <= src.y;
 		}
 };
-#define HERE cout << "HERE" << endl
-#define HOGE cout << "HOGE" << endl
-#define EXIT cout << "EXIT" << endl; exit(0);
+ostream& operator<<(ostream& os, const Point& p) {
+	os << "(" << p.x << ", " << p.y << ")";
+	return os;
+}
+#define HERE cerr << "HERE" << endl
+#define HOGE cerr << "HOGE" << endl
+#define FUGA cerr << "FUGA" << endl
+#define PIYO cerr << "PIYO" << endl
+#define DEBUG(x) cerr << #x << ": " << x << endl
+#define EXIT cerr << "EXIT" << endl; exit(0);
 #define INF LLONG_MAX
 #define range(index, a, b) for(ll index=a; i<b; i++)
 #define rrange(index, a, b) for(ll index=a; i>=b; i--)
