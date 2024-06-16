@@ -1,6 +1,6 @@
 #!/bin/bash
 
-outfile="./lib.cpp"
+outfile="./.base/lib.cpp"
 
 std="./.lib/std.cpp"
 
