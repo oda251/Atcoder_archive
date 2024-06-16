@@ -79,6 +79,12 @@ ostream& operator<<(ostream& os, const Point& p) {
 	os << "(" << p.x << ", " << p.y << ")";
 	return os;
 }
+typedef enum e_dir {
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT,
+} t_dir;
 #define HERE cerr << "HERE" << endl
 #define HOGE cerr << "HOGE" << endl
 #define FUGA cerr << "FUGA" << endl
