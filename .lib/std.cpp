@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
 using namespace std;
 typedef long long ll;
 
