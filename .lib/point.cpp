@@ -61,6 +61,11 @@ class Point {
 		bool operator<=(const Point &src) const {
 			return x <= src.x && y <= src.y;
 		}
+		struct Hash {
+			size_t operator()(const Point &p) const {
+				return hash<int>()(p.x) ^ (hash<int>()(p.y) << 1);
+			}
+		};
 };
 ostream& operator<<(ostream& os, const Point& p) {
 	os << "(" << p.x << ", " << p.y << ")";
