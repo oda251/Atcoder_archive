@@ -1,3 +1,14 @@
+#include <bits/stdc++.h>
+//#include <vector>
+//#include <iostream>
+//#include <string>
+//#include <queue>
+//#include <deque>
+//#include <unordered_map>
+//#include <random>
+
+using namespace std;
+typedef long long ll;
 class Point {
 	public:
 		int x;
@@ -61,13 +72,13 @@ class Point {
 		bool operator<=(const Point &src) const {
 			return x <= src.x && y <= src.y;
 		}
-		struct Hash {
-			size_t operator()(const Point &p) const {
-				return hash<int>()(p.x) ^ (hash<int>()(p.y) << 1);
-			}
-		};
 };
-ostream& operator<<(ostream& os, const Point& p) {
-	os << "(" << p.x << ", " << p.y << ")";
-	return os;
-}
+#define HERE cerr << "HERE" << endl
+#define HOGE cerr << "HOGE" << endl
+#define FUGA cerr << "FUGA" << endl
+#define DEBUG(x) cerr << #x << ": " << x << endl
+#define EXIT cerr << "EXIT" << endl; exit(0);
+#define INF LLONG_MAX
+#define range(index, a, b) for(ll index=a; i<b; i++)
+#define rrange(index, a, b) for(ll index=a; i>=b; i--)
+#define all(a) (a).begin(), (a).end()
