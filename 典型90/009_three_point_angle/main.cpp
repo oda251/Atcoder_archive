@@ -19,7 +19,7 @@ double get_angle(Point p) {
 	return angle;
 }
 
-double get_angle_betweet(double a, double b) {
+double get_angle_between(double a, double b) {
 	double diff = b - a;
 	if (diff < 0)
 		diff += 2 * M_PI;
@@ -61,12 +61,13 @@ int	main()
 			Point inv_vec = {-base_vec.x, -base_vec.y};
 			double base_angle = get_angle(base_vec);
 			double inv_angle = get_angle(inv_vec);
-			// upper_boundは、指定した値以上の最初の要素のイテレータを返す
-			auto idx = upper_bound(
+			// lower_boundはkey以上の中でできるだけ左側
+			// upper_boundはkeyより大きいなかでできるだけ左側
+			auto idx = lower_bound(
 				deflection.begin(), deflection.end(), inv_angle
 			) - deflection.begin();
-			ans = max(ans, get_angle_betweet(base_angle, deflection[idx % (N-1)]));
-			ans = max(ans, get_angle_betweet(base_angle, deflection[(idx+1) % (N-1)]));
+			ans = max(ans, get_angle_between(base_angle, deflection[idx % (N-1)]));
+			ans = max(ans, get_angle_between(base_angle, deflection[(idx+1) % (N-1)]));
 		}
 	}
 	// double型の出力時に桁数を指定する 勝手に丸められてしまうため
