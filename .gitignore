@@ -3,4 +3,6 @@ a.out
 *.txt
 *.gch
 .code.cpp
+code.cpp
 *.dSYM
+out
