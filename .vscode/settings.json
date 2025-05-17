@@ -91,6 +91,7 @@
 		"format": "cpp",
 		"spanstream": "cpp",
 		"stacktrace": "cpp",
-		"stdfloat": "cpp"
+		"stdfloat": "cpp",
+		"all": "cpp"
 	}
 }

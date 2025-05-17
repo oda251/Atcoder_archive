@@ -11,46 +11,36 @@ auto boostIO = []() {
   return 0;
 }();
 /*####################################################*/
-auto input = []() { return 0; }();
-struct Edge {
-  pair<ll, ll> edge;
-  ll w;
-};
 int main() {
   ll N, M;
   cin >> N >> M;
-  vector<ll> cnt = vector<ll>(N, 0);
-  vector<ll> nodes = vector<ll>(N, -1);
-  vector<Edge> edges = vector<Edge>(M);
+  vector<int> X(M), Y(M);
+  vector<ll> Z(M);
+  vector<vector<pair<int, ll>>> G(N + 1);
   rep(i, M) {
-    ll u, v, w;
-    cin >> u >> v >> w;
-    edges[i].edge = {u, v};
-    edges[i].w = w;
-    cnt[u]++;
-    cnt[v]++;
+    cin >> X[i] >> Y[i] >> Z[i];
+    G[X[i]].push_back({Y[i], Z[i]});
+    G[Y[i]].push_back({X[i], Z[i]});
   }
-  for (auto e : edges) {
-    ll u = e.edge.first, v = e.edge.second, w = e.w;
-    if (nodes[u] == -1 && nodes[v] == -1) {
-      if (cnt[u] > cnt[v]) {
-        nodes[u] = 0;
-        nodes[v] = w;
-      } else {
-        nodes[v] = 0;
-        nodes[u] = w;
+  vector<bool> visited(N + 1, false);
+  vector<ll> value(N + 1, -1);
+  auto bfs = [&](int s) {
+    uint a = 0, b = 0 - 1;
+    queue<int> q;
+    q.push(s);
+    visited[s] = true;
+    while (!q.empty()) {
+      int v = q.front();
+      q.pop();
+      for (auto [nv, w] : G[v]) {
+        if (!visited[nv]) q.push(nv);
       }
-    } else if (nodes[u] != -1 && nodes[v] != -1) {
-      if (nodes[u] ^ nodes[v] != w) {
-        cout << -1 << endl;
-        return 0;
-      }
-    } else if (nodes[u] == -1) {
-      nodes[u] = nodes[v] ^ w;
-    } else if (nodes[v] == -1) {
-      nodes[v] = nodes[u] ^ w;
+    }
+  };
+  rep(i, N + 1) {
+    if (G[i].empty()) {
+      continue;
     }
   }
-  rep(i, N) { cout << nodes[i] << endl; }
-  return 0;
+  rep(i, N + 1) return 0;
 }
